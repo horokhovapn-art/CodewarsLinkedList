@@ -1,0 +1,10 @@
+from preloaded import Node
+
+def linked_list_from_string(list_repr: str) -> Node | None:
+    nodes = [node for node in list_repr.split(" -> ") if node != "None"]
+    if nodes:
+        head = None
+        for node in nodes[::-1]:
+            head = Node(int(node),head)
+        return head
+    return None
