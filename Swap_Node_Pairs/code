@@ -1,0 +1,22 @@
+from preloaded import Node
+
+def swap_pairs(head):
+    if head is None or head.next is None:
+        return head
+    node = head
+    new_head = head.next
+    prev_pair_end = None
+    while node and node.next:
+        if node.next.next:
+            next_pair_start = node.next.next
+        else:
+            next_pair_start = None
+        cur_node = node
+        node = node.next
+        node.next = cur_node
+        cur_node.next = next_pair_start
+        if prev_pair_end:
+            prev_pair_end.next = node
+        prev_pair_end = cur_node
+        node = next_pair_start
+    return new_head
