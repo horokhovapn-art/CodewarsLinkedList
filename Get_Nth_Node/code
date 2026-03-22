@@ -1,0 +1,22 @@
+from preloaded import Node
+
+# class Node(object):
+#     """Node class for reference"""
+#     def __init__(self, data, next=None):
+#         self.data = data
+#         self.next = next
+    
+def get_nth(node, index):
+    count = 0
+    cor_node = node
+    if node is None:
+        raise ValueError
+    if index < 0:
+        raise IndexError("Invalid index value should throw error.")
+    while count != index :
+        if not node.next:
+            raise IndexError("Invalid index value should throw error.") 
+        cor_node = node.next
+        node = node.next
+        count += 1
+    return cor_node
