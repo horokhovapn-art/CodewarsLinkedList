@@ -1,0 +1,17 @@
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def remove_duplicates(head):
+    if not head:
+        return None
+    node = head
+    if not node.next:
+        return head
+    while node and node.next:
+        if node.next.data == node.data:
+            node.next = node.next.next
+        if node.next and node.data != node.next.data:
+            node = node.next
+    return head
